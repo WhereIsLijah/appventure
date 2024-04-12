@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+      .navbar {
+          background-color: #00ff15;
+          padding: 10px 20px;
+          display: flex;
+          align-items: center;
+      }
+
+      .navbar-title {
+          color: #000000;
+          font-size: 1.5rem;
+          font-weight: bold;
+      }
+
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          margin: 0;
+          padding: 0;
+      }
+
+      h1 {
+          text-align: center;
+          color: #333;
+      }
+
+      form {
+          max-width: 400px;
+          margin: 20px auto;
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      form div {
+          margin-bottom: 15px;
+      }
+
+      form label {
+          display: block;
+          font-weight: bold;
+      }
+
+      form input[type="text"],
+      form input[type="email"],
+      form input[type="password"],
+      form input[type="submit"] {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-sizing: border-box;
+      }
+
+      form input[type="submit"] {
+          background-color: #007bff;
+          color: #fff;
+          cursor: pointer;
+      }
+
+      form input[type="submit"]:hover {
+          background-color: #0056b3;
+      }
+
+      .forgot-password {
+          text-align: right;
+          margin-top: -10px;
+          margin-bottom: 10px;
+      }
+
+      .sign-up-link {
+          text-align: center;
+          margin-top: 20px;
+      }
+
+      a {
+          color: #007bff;
+          text-decoration: none;
+      }
+
+      a:hover {
+          text-decoration: underline;
+      }
+
+      button {
+          display: block;
+          margin: 20px auto;
+          background-color: rgb(182, 180, 180);
+          padding: 10px 90px; /* Adjust padding as needed */
+          border-radius: 15px 15px;
+      }
+
+
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-title">
+        BlackBoysCode
+    </div>
+</div>
+<form method="post">
+  {% csrf_token %}
+  <h1>Login</h1>
+  <div class="form-group">
+    {{ form.username.label_tag }}
+    {{ form.username }}
+  </div>
+  <div class="form-group">
+    {{ form.password.label_tag }}
+    {{ form.password }}
+  </div>
+  <div class="forgot-password">
+    <p>Forgot password?</p>
+  </div>
+  <button type="submit">LOGIN</button>
+  <div class="sign-up-link">
+    <a href="{% url 'signup' %}">Sign up</a>
+</div>
+</form>
+</body>
+</html>

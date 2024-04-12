@@ -6,7 +6,10 @@ from .forms import SignupForm, LoginForm
 # Create your views here.
 # Home page
 def index(request):
-    return render(request, 'index.html')
+    context = {
+        'username': request.user.username
+    }
+    return render(request, 'index.html', context)
 
 # signup page
 def user_signup(request):
@@ -29,12 +32,7 @@ def user_login(request):
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)    
-                return redirect('home')
+                return redirect('index')
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
-
-# logout page
-def user_logout(request):
-    logout(request)
-    return redirect('login')
